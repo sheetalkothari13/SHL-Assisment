@@ -45,8 +45,8 @@ pip install -r requirements.txt
 ### 2. Configure Environment
 Create a `.env` file in the root directory (based on `.env.template`):
 ```bash
-# In c:\Users\sheetal\OneDrive\Documents\SHL Assessment\.env
 GEMINI_API_KEY=your-actual-api-key-here
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
 ### 3. Run the Service

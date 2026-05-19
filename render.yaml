@@ -5,8 +5,10 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
-      - key: ANTHROPIC_API_KEY
+      - key: GEMINI_API_KEY
         sync: false          # You will paste the real key in the Render dashboard
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
       - key: DATABASE_URL
         value: sqlite+aiosqlite:///./shl_assessment.db
     disk:

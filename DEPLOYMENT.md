@@ -30,7 +30,7 @@ We have created a `render.yaml` configuration file in the project root. This fil
 3. **Configure & Deploy:**
    - Select your repository.
    - Render will read the `render.yaml` automatically.
-   - It will prompt you for the **`ANTHROPIC_API_KEY`**. Paste your real Anthropic API key here.
+   - It will prompt you for the **`GEMINI_API_KEY`**. Paste your real Gemini API key here.
    - Click **Apply**.
    - Render will build and deploy the app automatically!
 
@@ -50,7 +50,8 @@ If you prefer to configure the web service manually on the Render dashboard:
    - **Build Command:** `pip install -r requirements.txt`
    - **Start Command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 4. Add **Environment Variables** in the Environment section:
-   - `ANTHROPIC_API_KEY` = `your-actual-anthropic-api-key`
+   - `GEMINI_API_KEY` = `your-actual-gemini-api-key`
+   - `GEMINI_MODEL` = `gemini-2.5-flash`
    - `DATABASE_URL` = `sqlite+aiosqlite:///./shl_assessment.db` (This configures SQLite)
 5. Click **Create Web Service**.
 
