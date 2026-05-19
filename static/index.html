@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHL Assessment Recommender - Premium Advisor</title>
+    <!-- Stylesheets link -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- App Top Header -->
+        <header class="app-header glass-panel">
+            <div class="logo-section">
+                <!-- Glowing Shield Icon -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#indigoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <defs>
+                        <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#6366f1" />
+                            <stop offset="100%" stop-color="#a78bfa" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <h1>SHL <span style="color:var(--accent-color)">Advisor</span></h1>
+            </div>
+            
+            <div class="header-actions">
+                <div class="badge-active">
+                    <span class="pulse"></span>
+                    <span>AGENT ENGINE ACTIVE</span>
+                </div>
+                <button class="btn btn-secondary btn-danger" id="btn-reset-chat">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    <span>Reset Chat</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workplace -->
+        <main class="workspace">
+            
+            <!-- Left Panel: Sidebar Manager -->
+            <section class="sidebar-panel">
+                
+                <!-- Chats Conversations History list -->
+                <div class="sidebar-section glass-panel">
+                    <div class="sidebar-title">
+                        <span>Active Chats</span>
+                        <button class="btn btn-primary" id="btn-new-chat" style="padding:0.25rem 0.5rem; font-size:0.75rem;">+ New</button>
+                    </div>
+                    <div class="sidebar-list" id="sessions-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Finalized Campaigns list -->
+                <div class="sidebar-section glass-panel">
+                    <div class="sidebar-title">
+                        <span>Saved Specifications</span>
+                    </div>
+                    <div class="sidebar-list" id="campaigns-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Center Panel: Conversational Chat & Selection Basket -->
+            <section class="center-panel">
+                
+                <!-- Chat Console Module -->
+                <div class="chat-module glass-panel">
+                    <div class="sidebar-title" style="margin-bottom:0.75rem;">
+                        <span>Conversational Assessment Recommender</span>
+                    </div>
+                    
+                    <!-- Messages Area -->
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Loaded dynamically by JS -->
+                    </div>
+                    
+                    <!-- Inputs Box -->
+                    <div class="chat-console-box">
+                        <!-- Quickstart Templates -->
+                        <div class="quickstart-box">
+                            <span class="quickstart-chip" data-prompt="I am hiring a Senior Python Developer. What code or ability tests do you recommend?">Senior Python Dev</span>
+                            <span class="quickstart-chip" data-prompt="What assessments are suitable for entry-level Customer Support representatives?">Customer Service</span>
+                            <span class="quickstart-chip" data-prompt="Can you explain the differences between the OPQ32r personality test and General Ability GSA?">Compare OPQ vs GSA</span>
+                            <span class="quickstart-chip" data-prompt="I need to assess software engineers' personality profiles. Can we add a fit test?">Add Personality Fit</span>
+                        </div>
+                        
+                        <!-- Text Input Bar -->
+                        <div class="chat-input-bar">
+                            <textarea id="chat-input" placeholder="Describe your hiring scenario or ask a question... (Press Enter to Send)"></textarea>
+                            <button id="send-btn" title="Send Message">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Bottom Progress & Turn Stats -->
+                        <div class="chat-meta-bar">
+                            <div class="progress-track">
+                                <span>Turn Limit</span>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" id="progress-fill"></div>
+                                </div>
+                                <span id="progress-text">0/8</span>
+                            </div>
+                            <span id="stage-text">Requirement Gathering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shortlist Spec Builder Basket (Bottom panel) -->
+                <div class="basket-panel glass-panel">
+                    
+                    <!-- Metadata inputs column -->
+                    <div class="basket-details">
+                        <div class="basket-title-row">
+                            <!-- Basket icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                            <span>Selection Shortlist</span>
+                        </div>
+                        <div class="basket-input-group">
+                            <input type="text" id="campaign-title" value="New Recruitment Campaign" placeholder="Campaign Title">
+                            <select id="campaign-seniority">
+                                <option value="Entry">Entry Level</option>
+                                <option value="Mid" selected>Mid Level</option>
+                                <option value="Senior">Senior Level</option>
+                            </select>
+                        </div>
+                        <input type="text" id="campaign-role" placeholder="Job Role (e.g. Software Engineer)" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:6px; color:white; font-family:var(--font-body); font-size:0.75rem; padding:0.4rem; outline:none; width:100%;">
+                        <button class="btn btn-primary" id="btn-save-campaign" style="width:100%; font-size:0.75rem; padding:0.45rem; justify-content:center; margin-top:auto;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                            <span>Save & Finalize Spec Sheet</span>
+                        </button>
+                    </div>
+
+                    <!-- Horizontally scrolling active tests cards basket -->
+                    <div class="basket-scroller" id="basket-scroller">
+                        <!-- Loaded dynamically by JS -->
+                    </div>
+
+                    <!-- SVG Competency coverage chart bars -->
+                    <div class="basket-chart-panel">
+                        <span class="chart-title">Skill Coverage Radar</span>
+                        <div class="competency-bars" id="competency-bars">
+                            <!-- Filled dynamically by JS -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Right Panel: Flat Catalog Explorer -->
+            <section class="catalog-panel glass-panel">
+                <div class="catalog-title-row">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    <span>SHL Assessment Catalog</span>
+                </div>
+                
+                <!-- Fuzzy Search -->
+                <div class="catalog-search-bar">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="catalog-search" placeholder="Search by name, skills, roles, or description...">
+                </div>
+
+                <!-- Domains Tab Navigation -->
+                <div class="catalog-tabs">
+                    <button class="catalog-tab active" data-tab="all">All tests</button>
+                    <button class="catalog-tab" data-tab="K">Knowledge</button>
+                    <button class="catalog-tab" data-tab="P">Personality</button>
+                    <button class="catalog-tab" data-tab="A">Ability</button>
+                    <button class="catalog-tab" data-tab="I">Industry</button>
+                </div>
+
+                <!-- Catalog Cards Container Accordion -->
+                <div class="catalog-scroller" id="catalog-scroller">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Modal Specification Preview overlay -->
+    <div class="modal-overlay" id="spec-modal">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h3>Campaign Specification Sheet Finalized</h3>
+                <button class="btn btn-secondary" id="modal-close" style="padding:0.25rem 0.5rem;">✕ Close</button>
+            </div>
+            <div class="modal-body" id="markdown-preview-content">
+                <!-- Filled dynamically by JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="navigator.clipboard.writeText(document.querySelector('.modal-body pre').innerText); alert('Markdown campaign spec sheet copied to clipboard!');">Copy Markdown</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frontend Core Application script -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
